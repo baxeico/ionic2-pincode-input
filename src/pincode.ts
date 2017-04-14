@@ -16,6 +16,8 @@ export class PinCode extends ViewController {
   private _app: App;
 
   constructor(app: App, opts: PincodeOpt = {}) {
+    opts.enableBackdrop = isPresent(opts.enableBackdrop) ?
+      !!opts.enableBackdrop : true;
     opts.enableBackdropDismiss = isPresent(opts.enableBackdropDismiss) ?
       !!opts.enableBackdropDismiss : true;
     opts.hideForgotPassword = isPresent(opts.hideForgotPassword) ?
@@ -26,6 +28,7 @@ export class PinCode extends ViewController {
     opts.title = opts.title || 'Password';
     opts.cancelButtonText = opts.cancelButtonText || 'cancel';
     opts.forgotPasswordText = opts.forgotPasswordText || 'forgot password';
+    opts.buttonsColor = opts.buttonsColor || 'light';
     super(PincodeCmp, opts, null);
     this._app = app;
     this.isOverlay = true;
